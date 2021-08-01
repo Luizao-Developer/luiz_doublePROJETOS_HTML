@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interface de login</title>
+</head>
+<style>
+    *{
+        margin:0;
+        padding: 0;
+
+    }
+    body{
+        background-image: url(fotos/imagem2.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+    }
+    #login{
+        padding: 5em;
+        width: 200px;
+        background: rgba(0, 0, 0, 0.253);
+        border-radius: 10px 0px 10px 0px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%,-50%);
+        font-family: sans-serif;
+        color: white;
+        box-shadow: 0 0 90px 10px black;
+        letter-spacing: 2px;
+        
+    }
+    #login #email,#senha{
+        width: 250px;
+        height: 40px;
+        border: none;
+        border-bottom: solid yellow;
+        background: transparent;
+        color: white;
+        outline: none;
+        transition: all .5s;
+    }
+    #login #email:hover,#senha:hover{
+        width: 270px;
+        border-bottom: solid greenyellow;
+        transition: all .5s;
+    }
+    #login form{
+        margin-top: 18px;
+    }
+    #login form p{
+        font-size: 20px;
+    }
+    #adicionais{
+        margin-top: 20px;
+    }
+    #login a{
+        text-decoration: none;
+        color: turquoise;
+        margin: 0 3px;
+    }
+    #login #lembrar{
+        width:20px;
+        height: 20px;
+        }
+    #login form button{
+        text-align: center;
+        width: 200px;
+        height: 25px;
+        color: white;
+        background: yellow;
+        margin-top: 15px;
+        border: none;
+        border-radius: 10px;
+        transition: all .5s;
+    }
+    #login form button:hover{
+        width: 230px;
+        box-shadow: 0 0 40px yellow, 0 0 80px yellow, 0 0 90px yellow;
+    }
+</style>
+<body>
+    <section id="login">
+        <h1>C O N T A</h1>
+        <form action="">
+            <p>Email:</p>
+            <input type="email" name="email" id="email" placeholder="Insira seu email">
+            <p>Senha</p>
+            <input type="password" name="senha" id="senha" placeholder="Insira sua senha">
+            <p><input type="checkbox" name="lembrar" id="lembrar">Lembrar-me</p>
+            <button id="acessar" onclick="alert('Seja bem vindo(a)!')">Acessar</button>
+        </form>
+        <p id="adicionais">
+        <p><a href="">Esqueceu sua senha?</a></p>
+        <h2><a href="">Cadastre-se</a></h2>
+        </p>
+    </section>
+</body>
+</html>
