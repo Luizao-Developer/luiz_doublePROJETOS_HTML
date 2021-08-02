@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Player Audio</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+
+    }
+    body{
+        background: linear-gradient(to right,darkblue,blue,orange);
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        height: 30vh;
+        width: 100%;
+    }
+    .card{
+        
+        margin: 150px auto;
+        color: white;
+        background: rgb(5, 5, 49);
+        border: none;
+        overflow: hidden;
+        
+    }
+    #titular{
+        text-align: center;
+        position: absolute;
+        color: white;
+    }
+    #foto{
+        background-position: center;
+        background-size: cover;
+        background-attachment: fixed;
+        
+    }
+    #controles{
+        text-align: center;
+    }
+    #controles button{
+        width: 55px;
+        height: 55px;
+        border: none;
+        margin: 40px 5px;
+        border-radius: 3px;
+        overflow: hidden;
+        transition: all .5s;
+    }
+    #controles button:hover{
+        background: gold;
+        transition: all .5s;
+        box-shadow: 0 0 10px gold, 0 0 40px gold, 0 0 60px gold;
+    }
+    #controles button img{
+        width: 35px;
+        height: 35px;
+    }
+    input[type="range"]{
+        height: 1px;
+    }
+    #durar{
+        padding: 40px;
+    }
+    #caminho{
+        width: 100%;
+        background: white;
+        height: 2px;
+        cursor: pointer;
+    }
+    #bolinha{
+        transform: scale(5px);
+        border-radius: 50%;
+        background: yellow;
+        height: 15px;
+        width: 15px;
+        margin-top: -8px;
+    }
+</style>
+<body>
+    <div class="card" style="width: 25rem;">
+        <img id="foto" src="neve.jpg" alt="Card image cap">
+        <div id="titular">
+            <h4 id="titulo">Titulo</h4>
+            <p id="autor">autor</p>
+        </div>
+        <div id="controles">
+            <button id="anterior"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAaElEQVRIie3TsQ2AMAxE0T8CDT2DZBSGYRtGYQz6tAxgGiK5QMSJZIGQX3vKRXIcCOFXBmDtyEwSsAPSmFWNwALkq0CMmckEbOqwLnnKTGbguCmQSvadC8B5RIXrI2tua6q5frQQXnQCYspF7Q8eufMAAAAASUVORK5CYII="/></button>
+            <button id="tocar" onclick="tocando()"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAYElEQVRIie3UMQ2AQBBE0VciAylIQQgJOEECEpByMiihupLQ3ITmfjL1T3Z2l04nzYExKbhxYcGQEtScmJOCmh1TUnCjYNWgnzdBs7H9JijYhEYUKzm2ptFDi7+KTuebB1NFO550b58LAAAAAElFTkSuQmCC"/></button>
+            <button id="posterior"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAXklEQVRIie3TsQmAMBBA0TeArb1jOIrbOIyjOIi9jSPEytokcKBwH1L94kPujiT5LRuGDldNwYG50TUFCk6sGCtdc+B5O6YK1x0ouLC8uO8Gwr4odMihaxp+aEnyIW4Wv0WJNbn6OwAAAABJRU5ErkJggg=="/></button>
+            
+            
+        </div>
+        <div id="durar">
+            <div id="caminho"></div>
+            <div id="bolinha"></div>
+        </div>
+    </div>
+</body>
+<script>
+    var imagem = document.getElementById('foto')
+    var toque = document.getElementById('tocar')
+    var audios = [{nome:"main-theme", artista:"Hearts of iron",musica:"main-theme.mp3",foto:"foto12.jpg"},
+    {nome:"oogway-ascends-kung-fu-panda-soundtrack", artista:"Kung fu Panda",musica:"oogway-ascends-kung-fu-panda-soundtrack.mp3",foto:"foto1.jpg"},
+    {nome:"honor-main-title-theme-from-the-pacific", artista:"The Pacific series",musica:"honor-main-title-theme-from-the-pacific.mp3",foto:"espaco1.jpg"},
+    {nome:"feel-good-ncs-release", artista:"ncs-release",musica:"feel-good-ncs-release.mp3",foto:"foto2.jpg"},
+    {nome:"candyland-ncs-release", artista:"ncs-release",musica:"candyland-ncs-release.mp3",foto:"pexels-andrea-piacquadio-761963.jpg"}]
+
+    var titulo = document.getElementById('titulo')
+    var autor = document.getElementById('autor')
+    var som = document.getElementById('volume')
+    var bolinha = document.getElementById('bolinha')
+    var audio = new Audio()
+    var posic = 0
+
+    
+    function tocando(){
+        if(audio.paused){
+            
+            audio.src=audios[posic].musica
+            audio.play()
+            imagem.src=audios[posic].foto
+            tocar.innerHTML = `<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAI0lEQVRIiWNgGAWjYFiA/0gYn9ioBaMWjFowmC0YBaNggAEAfoM7xeGFS3YAAAAASUVORK5CYII="/>`
+        }else{
+            audio.pause()
+            tocar.innerHTML =`<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAYElEQVRIie3UMQ2AQBBE0VciAylIQQgJOEECEpByMiihupLQ3ITmfjL1T3Z2l04nzYExKbhxYcGQEtScmJOCmh1TUnCjYNWgnzdBs7H9JijYhEYUKzm2ptFDi7+KTuebB1NFO550b58LAAAAAElFTkSuQmCC"/>`
+        }
+        titulo.innerHTML = `${audios[posic].nome}`
+        autor.innerHTML = `${audios[posic].artista}`
+    }
+    $("#anterior").click(function(){
+        posic++
+        if(posic < 1){
+            posic = 0
+        }else{
+            tocando()
+        }
+    })
+    $("#posterior").click(function(){
+        posic++
+        if(posic > 5){
+            posic = 0
+        }else{
+            tocando()
+        }
+    })
+    audio.addEventListener('timeupdate',function(){
+        var durar = audio.currentTime  * (audio.duration / 100)
+        bolinha.style.transform = 'translate(' + durar   + '%)'
+    })
+    
+</script>
+</html>
