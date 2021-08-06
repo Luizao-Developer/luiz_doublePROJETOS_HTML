@@ -1,0 +1,66 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    background: linear-gradient(45deg,purple,salmon);
+    width: 100%;
+    height: 100vh;
+}
+#nomeM{
+    color: darkblue;
+}
+#player{
+    margin: auto;
+    padding: 2em;
+    background: white;
+    border-radius: 15px;
+    text-align: center;
+    overflow: hidden;
+}
+#player #titulo{
+    padding: 20px;
+}
+#player #titulo, #fotoMusica{
+    border-radius: 50%;
+    width: 240px;
+    height: 240px;
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+#player #controles{
+    margin-top: -160px;
+    
+}
+#controles #anterior,#tocar,#proximo{
+    padding: 20px;
+    border: none;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 4px 4px 16px 1px rgb(56, 51, 51);
+    transition: all .5s;
+}
+#controles #anterior:hover,#tocar:hover,#proximo:hover{
+    box-shadow: 4px 4px 16px 1px transparent;
+}
+#barra_duracao{
+    margin-top: 10px;
+    padding: 30px;
+    text-align: center;
+}
+#barra_duracao #indicador{
+    background:blue;
+    width: 12px;
+    height: 12px;
+    margin-top: -6px;
+    border-radius: 50%;
+    margin-left: 30px;
+}
+#barra_duracao #barra{
+    margin: auto;
+    width: 100px;
+    height: 1px;
+    background: rgb(56, 51, 51);
+}
