@@ -1,0 +1,40 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url(imagens/crowd-g31563116e_640.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    display: flex;
+
+}
+#login{
+    margin: 150px auto ;
+    color: rgb(42, 10, 71);
+    background: white;
+    padding: 3em;
+    border-radius: 10px;
+}
+#login input{
+    outline: none;
+    width: 300px;
+    margin: 10px 10px;
+    height: 30px;
+    border: none;
+    border-bottom: solid rgb(42, 10, 71);
+}
+#login button{
+    background: transparent;
+    margin-left: 110px;
+    height: 30px;
+    width: 150px;
+    border: solid rgb(42, 10, 71);
+    border-width: 1px;
+    color: rgb(42, 10, 71);
+    border-radius: 20px;
+    transition: all .5s;
+}
+#login button:hover{
+    background: rgb(42, 10, 71);
+    color: white;
+}
