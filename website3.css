@@ -1,0 +1,17 @@
+body{
+    background: rgb(2, 2, 58);
+    color: white;
+}
+#offcanvasExample{
+    background: rgba(0, 0, 0, 0.527);
+    color: white;
+}
+.card-group button{
+    width:60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    background: orangered;
+    color: white;
+
+}
